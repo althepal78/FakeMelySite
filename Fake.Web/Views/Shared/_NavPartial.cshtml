@@ -2,19 +2,24 @@
 @using Fake.Utilities
 @inject IHttpContextAccessor HttpContextAccessor
 
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img class="logo " src="/images/melysSmallLogo.jpg" style="border-radius: 60%;width: 35%" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index"> Home  </a>
+                    <a class="nav-link" role="button" asp-area="Customer" asp-controller="Home" asp-action="Index"> Home  </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " asp-area="Customer" asp-controller="Menu" asp-action="Index"> Daily Menu  </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
                 </li>
                 @if (User.IsInRole(StaticDetails.Role_Admin))
                 {
@@ -29,6 +34,7 @@
                 }
             </ul>
             <partial name="_LoginPartial" />
+          
         </div>
     </div>
 </nav>

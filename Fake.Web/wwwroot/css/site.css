@@ -13,26 +13,15 @@ html {
     min-height: 100%;
 }
 
-.carousel-control-prev
-{
-    color: #fff !important;
-    text-decoration: none;
-    outline: 0;
-/*    opacity: 0.9;*/
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #000;
+    color: whitesmoke !important;
 }
 
-#carouselExampleControls > button.carousel-control-prev > span.carousel-control-prev-icon {
-    background-color: rgba(0,0,0,.8);
-    color:white !important;
-}
-#carouselExampleControls > button.carousel-control-next > span.carousel-control-next-icon {
-    background-color: rgba(0,0,0,.8);
-    color: white !important;
-}
+    .carousel-control-prev-icon:hover, ..carousel-control-next-icon:hover{
+        background: #000;
+        color: whitesmoke !important;
+    }
 
-.carousel-control-prev:hover, .carousel-control-prev:focus, .carousel-control-next:hover, .carousel-control-next:focus {
-    color: #fff;
-    text-decoration: none;
-    outline: 0;
-    opacity: 0.8 !important;
-}
+

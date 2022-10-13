@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Mely's Underground Cuisine</title>
+    <link rel="stylesheet" href="~/css/mintyBootswatchTheme.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Fake.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+    <link rel="shortcut icon" type="img/jpg" href="/images/melysSmallLogo.jpg" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <partial name="_NavPartial" />
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="text-center text-lg-start bg-black footer">
+        <partial name="_FooterPartial" />
+    </footer>
+    <partial name="_ScriptsPartial" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

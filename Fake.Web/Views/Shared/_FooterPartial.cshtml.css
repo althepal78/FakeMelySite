@@ -1,0 +1,64 @@
+﻿.icons .fab {
+    font-size: xx-large;
+    text-decoration: none !important;
+    border:0;
+}
+
+.icons a {
+    text-decoration: none;
+}
+
+.icons .fa-facebook {
+    color: #0676e8;
+}
+    .icons .fa-facebook:hover {
+        color: white;
+    }
+
+.icons .fa-twitter {
+    color: #1d9bf0;
+}
+    .icons .fa-twitter:hover {
+        color: #fff;
+    }
+.icons .fa-google {
+    color: #ff4131;
+}
+    .icons .fa-google:hover {
+        color: #fff;
+    }
+
+.icons .fa-instagram {
+    color: #be488f;
+}
+    .icons .fa-instagram:hover {
+        color: #fff;
+    }
+
+.icons .fa-linkedin {
+    color: #0a66c2;
+}
+    .icons .fa-linkedin:hover {
+        color: #fff;
+    }
+
+.icons .fa-tiktok {
+    background-color: #fff;
+    color: #0a2120;
+}
+    .icons .fa-tiktok:hover {
+        color: #fff;
+        background-color: #0a2120;
+    }
+
+.pink-letters {
+    color: #ff9ff6 !important;
+}
+.footer a {
+    text-decoration: none;
+    color: #ff9ff6 !important;
+    height:1.5rem;
+}
+.footer p{
+    height:1rem;
+}

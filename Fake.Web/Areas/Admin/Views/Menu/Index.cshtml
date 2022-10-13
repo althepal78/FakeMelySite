@@ -1,0 +1,36 @@
+﻿@model List<Product>
+@* Index for Admin Create Menus*@
+<h1>Start Creating a Menu for your</h1>
+@if (@Model != null)
+{
+    <table class="table bg-black text-warning">
+        <thead class="text-lg-center text-info">
+            <tr>
+                <th>Chef</th>
+                <th>Dish Name</th>
+                <th>Image </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="font-size: 2rem;" class="p-3">
+
+                    <td  class="text-center">
+                        <a asp-controller="Menu" 
+                           asp-action="Upsert"
+                           asp-route-id="@item.Id"
+                                class="btn btn-info">
+                            @item.Title
+                        </a>
+                    </td>
+
+                    <td>@item.Description</td>
+                    <td class="text-center">
+                        <img style="width:11rem;" class="align-content-center" src="@item.ImgURL" alt="@item.Description" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

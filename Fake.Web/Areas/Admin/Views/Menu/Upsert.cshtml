@@ -1,10 +1,15 @@
-﻿@model MenuVM
+﻿@model ProductVM
 
 @if (Model != null)
 {
-    @if(Model.Food is not null)
+    @if(Model is not null)
     {
-        
+        <h1>@Model.Product.Title</h1>
+        <form asp-controller="Menu" asp-action="AddMenu" method="post">
+            <input type="hidden" asp-for="Product.Id" value="@Model.Product.Id" />
+            <input type="date" />
+            <input type="submit" class="btn btn-outline-dark btn-warning" value="Create Menu" />
+        </form>
     }
 }
 @section Scripts{

@@ -7,6 +7,8 @@ namespace Fake.Models.ViewModels
     {
         public Product Product { get; set; }
 
+        DateTime InputDate { get; set; }
+
         [ValidateNever]
         public IEnumerable<SelectListItem> CategoryList { get; set; }
     }

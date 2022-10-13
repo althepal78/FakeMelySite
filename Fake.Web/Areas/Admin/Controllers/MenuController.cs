@@ -29,7 +29,10 @@ namespace Fake.Web.Areas.Admin.Controllers
         // get action   
         public IActionResult Upsert(Guid? id)
         {
-           var ifInDb = _unitOfWork.Product.GetFirstOrDefault(f => f.Id == id);
+            ProductVM ifInDb = new ProductVM() 
+            {
+              Product =  _unitOfWork.Product.GetFirstOrDefault(f => f.Id == id)
+            }; 
 
             return View(ifInDb);
         }
@@ -45,7 +48,7 @@ namespace Fake.Web.Areas.Admin.Controllers
             }
             Console.WriteLine(dt);
             Product pro = _unitOfWork.Product.GetFirstOrDefault(p => p.Id == obj.Product.Id);
-            return View(pro);
+            return View(pro.Id);
         }
     }
 }

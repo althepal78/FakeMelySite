@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fake.Models.ViewModels
 {
@@ -7,7 +8,8 @@ namespace Fake.Models.ViewModels
     {
         public Product Product { get; set; }
 
-        DateTime InputDate { get; set; }
+      
+        public DateTime InputDate { get; set; }
 
         [ValidateNever]
         public IEnumerable<SelectListItem> CategoryList { get; set; }

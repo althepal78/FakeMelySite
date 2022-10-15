@@ -39,16 +39,18 @@ namespace Fake.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM obj, DateTime dt)
+        public IActionResult Upsert(ProductVM obj)
         {
+           obj.Product = _unitOfWork.Product.GetFirstOrDefault(f => f.Id == obj.Product.Id);
+
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Model", "your model is no working ");
-                return View();
+                ModelState.AddModelError("Model", "your model is not working ");
+                return View(new {id = obj.Product.Id});
             }
-            Console.WriteLine(dt);
+            
             Product pro = _unitOfWork.Product.GetFirstOrDefault(p => p.Id == obj.Product.Id);
-            return View(pro.Id);
+            return RedirectToAction(nameof(Index),"Menu");
         }
     }
 }

@@ -2,12 +2,13 @@
 
 @if (Model != null)
 {
-    @if(Model is not null)
+    if(Model is not null)
     {
         <h1>@Model.Product.Title</h1>
-        <form asp-controller="Menu" asp-action="AddMenu" method="post">
+        <form asp-controller="Menu" asp-action="Upsert" method="post">
+            <div asp-validation-summary="All"></div>
             <input type="hidden" asp-for="Product.Id" value="@Model.Product.Id" />
-            <input type="date" />
+            <input asp-for="InputDate"  />
             <input type="submit" class="btn btn-outline-dark btn-warning" value="Create Menu" />
         </form>
     }

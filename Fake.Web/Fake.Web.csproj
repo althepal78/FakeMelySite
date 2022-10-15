@@ -8,13 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewComponents\**" />
+    <Content Remove="ViewComponents\**" />
+    <EmbeddedResource Remove="ViewComponents\**" />
+    <None Remove="ViewComponents\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Fake.DataAccess\Fake.DataAccess.csproj" />
     <ProjectReference Include="..\Fake.Utilities\Fake.Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Data\" />
-    <Folder Include="ViewComponents\" />
   </ItemGroup>
 
   <ItemGroup>

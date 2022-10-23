@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/footer.css",
+    "inputFile": "wwwroot/scss/footer.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/nav.css",
+    "inputFile": "wwwroot/scss/nav.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/site.css",
+    "inputFile": "wwwroot/scss/site.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "inputFile": "wwwroot/scss/something.scss",
+    "outputFile": "wwwroot/css/something.css",
+    "minify": {
+      "enabled": false
+    }
+  }
+]

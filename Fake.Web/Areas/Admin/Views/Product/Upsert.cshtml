@@ -3,62 +3,60 @@
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
     <input hidden asp-for="Product.Id" />
     <input hidden asp-for="Product.ImgURL" />
-
-
-    <div class="row">
-        <div class="col-10">
-            <div class="border p-3 mt-4 row">
-                <div class="col-12 pb-2">
-                    <h2 class="text-primary">@(Model.Product.Id != Guid.Empty ? "Update" : "Create") Product</h2>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <h2>@(Model.Product.Id != Guid.Empty ? "Update" : "Create") Product</h2>
                 </div>
 
-                <div class="mb-3">
+                <div>
                     <label asp-for="Product.Title"></label>
-                    <input asp-for="Product.Title" class="form-control" />
-                    <span asp-validation-for="Product.Title" class="text-danger"></span>
+                    <input asp-for="Product.Title" />
+                    <span asp-validation-for="Product.Title"></span>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label asp-for="Product.Description"></label>
-                    <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
-                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                    <textarea asp-for="Product.Description"></textarea>
+                    <span asp-validation-for="Product.Description"></span>
                 </div>
-                <div class="mb-3 col-6">
+                <div>
                     <label asp-for="Product.Author"></label>
-                    <input asp-for="Product.Author" class="form-control" />
-                    <span asp-validation-for="Product.Author" class="text-danger"></span>
+                    <input asp-for="Product.Author" />
+                    <span asp-validation-for="Product.Author"></span>
                 </div>
-                <div class="mb-3 col-6">
+                <div>
                     <label asp-for="Product.Price"></label>
-                    <input asp-for="Product.Price" class="form-control" />
-                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                    <input asp-for="Product.Price" />
+                    <span asp-validation-for="Product.Price"></span>
                 </div>
 
-                <div class="mb-3 ">
+                <div>
                     <label asp-for="Product.ImgURL"></label>
-                    <input type="file" id="uploadBox" name="file" class="form-control" />
+                    <input type="file" id="uploadBox" name="file" />
                 </div>
-                <div class="mb-3 col-6">
+                <div>
                     <label asp-for="Product.CategoryId"></label>
-                    <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                    <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList">
                         <option disabled selected>--Select Category</option>
                     </select>
-                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+                    <span asp-validation-for="Product.CategoryId"></span>
                 </div>
                 <div class="col-12">
                     @if (Model.Product.Id != Guid.Empty)
                     {
-                        <button class="btn btn-info mr-1" type="submit" style="width: 150px;">Update</button>
+                        <button type="submit" style="width: 150px;">Update</button>
                     }
                     else
                     {
-                        <button class="btn btn-info mr-1" onclick="return ValidateInput()" type="submit" style="width: 150px;">Create</button>
+                        <button onclick="return ValidateInput()" type="submit">Create</button>
                     }
-                    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary m" style="width: 150px;">Back</a>
+                    <a asp-controller="Product" asp-action="Index">Back</a>
                 </div>
             </div>
 
         </div>
-      
+
     </div>
 </form>
 @section Scripts{

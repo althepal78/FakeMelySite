@@ -1,24 +1,67 @@
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 12px;
-    }
+﻿*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Fuzzy Bubbles", cursive;
+  font-size: large;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  scroll-behavior: smooth;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: #000;
-    color: whitesmoke !important;
+body {
+  width: 100%;
+  height: 100%;
+  color: #000;
 }
 
-    .carousel-control-prev-icon:hover, ..carousel-control-next-icon:hover{
-        background: #000;
-        color: whitesmoke !important;
-    }
+img {
+  width: 10rem;
+}
+
+nav {
+  background: #000;
+  width: 100%;
+  padding: 10px 10%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+nav img {
+  width: 4rem;
+  cursor: pointer;
+  object-fit: contain;
+  margin-left: 1.5rem;
+}
+nav ul {
+  width: 100%;
+  text-align: right;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0.625rem 1.25rem;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+nav .sub-menu-wrap {
+  position: absolute;
+  top: 100%;
+  right: 40%;
+  width: 18rem;
+}
+nav .sub-menu-wrap .sub-menu {
+  background: #00ff90;
+  padding: 1.25rem;
+  margin: 0.625rem;
+}
+nav .sub-menu-wrap .sub-menu .menu-creater {
+  display: flex;
+  align-items: center;
+}
+nav .sub-menu-wrap .sub-menu .menu-creater h2 {
+  font-weight: 500;
+}

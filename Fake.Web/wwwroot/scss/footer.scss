@@ -1,0 +1,93 @@
+﻿@import "variables.scss";
+
+/* Footer Section */
+footer {
+    padding: 0.5rem;
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: auto;
+    /* start of social media contact us section */
+    .social-media {
+        display: flex;
+        padding: 1rem;
+        margin-top: .5rem;
+        justify-content: center;
+
+        .icons {
+            margin: 0 0.5rem;
+            text-align: center;
+            top: 50%;
+            align-items: center;
+
+            a {
+                margin: 0.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .fa-facebook {
+                text-align: center;
+                color: $color-FB;
+            }
+
+            .fa-twitter {
+                color: $color-TW;
+            }
+
+            .fa-google {
+                background: $color-GG;
+                color: transparent;
+                -webkit-background-clip: text;
+                text-fill-color: transparent;
+            }
+
+            .fa-instagram {
+                background: $color-IN;
+                color: transparent;
+                text-fill-color: transparent;
+                -webkit-background-clip: text;
+            }
+
+            .fa-linkedin {
+                color: $color-LI;
+            }
+
+            .fa-tiktok {
+                background: $color-TT;
+                color: transparent;
+                text-fill-color: transparent;
+                -webkit-background-clip: text;
+            }
+
+            :is(.fa-facebook, .fa-twitter, .fa-google, .fa-instagram, .fa-linkedin, .fa-tiktok) {
+                &:hover {
+                    //do stuff
+                    color: white;
+                }
+            }
+        }
+        /* end icons section*/
+    }
+    /* end of social media contact us section */
+    /* start of column section */
+    .column-section {
+        display: grid;
+        padding: 0.6rem;
+        grid-template-columns: 1fr 2fr 1fr;
+        align-content: center;
+
+        h3 {
+            color: $color-pink;
+        }
+    }
+    // end column-section
+    .copyright {
+        text-align: center;
+        color: $color-pink;
+    }
+}
+/* End Footer Section*/

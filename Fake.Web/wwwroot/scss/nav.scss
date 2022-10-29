@@ -1,0 +1,61 @@
+﻿@import "variables.scss";
+/* Navbar Section */
+nav {
+    display: flex;
+    padding: 1rem;
+    gap: 3rem;
+    background: black;
+    color: $color-pink;
+    align-items: center;
+    align-content:center;
+
+
+    img {
+        width: 4rem;
+        margin-left: 2rem;
+    }
+
+    a,
+    a:visited,
+    a:active {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+            color: $color-pink;
+            background-color: black;
+        }
+    }
+
+    ul {
+        list-style: none;
+        position: relative;
+
+        .components {
+            display: none;
+        }
+
+        .show {
+            display: block;
+            transition-duration: 3s;
+        }
+
+        li {
+            display: inline;
+            margin: 0.23rem;
+
+            ul {
+                position: absolute;
+                right: 0;
+                background: rgb(0, 1, 1);
+                border-radius: 0.2rem;
+                box-shadow: -.3rem .5rem .2rem $color-pink;
+
+                li {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+/* End Navbar Section */

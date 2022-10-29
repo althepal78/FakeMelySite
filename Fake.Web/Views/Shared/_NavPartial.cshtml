@@ -16,29 +16,33 @@
                asp-controller="Menu"
                asp-action="Index"> Daily Menu  </a>
         </li>
+
+        @if (User.IsInRole(StaticDetails.Role_Admin))
+        {
+            <li class="component-list">
+                <a id="drop-btn" href="#">Content Management ></a>
+                <ul class="components">
+                    <li>
+                        <a class="sub-menu-link" asp-area="Admin"
+                       asp-controller="Category"
+                       asp-action="Index">
+                            Category <span class="material-icons">category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sub-menu-link" asp-area="Admin"
+                       asp-controller="Product"
+                       asp-action="Index">Food/Drinks ></a>
+                    </li>
+                    <li>
+                        <a class="sub-menu-link" asp-area="Admin"
+                       asp-controller="Menu"
+                       asp-action="Index">Menu Creater ></a>
+                    </li>
+                </ul>
+            </li>
+        }
     </ul>
-    @if (User.IsInRole(StaticDetails.Role_Admin))
-    {
-        <a href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
-
-        <div class="sub-menu-wrap">
-            <div class="sub-menu">
-              
-                <a class="menu-item" asp-area="Admin"
-       asp-controller="Category"
-       asp-action="Index">Category</a>
-
-        <a class="menu-item" asp-area="Admin"
-       asp-controller="Product"
-       asp-action="Index">Food/Drinks</a>
-
-                <a class="menu-item" asp-area="Admin"
-       asp-controller="Menu"
-       asp-action="Index">Menu Creater</a>
-            </div>
-        </div>
-    }
-
-    <partial name="_LoginPartial" />
+    <partial class="login-section" name="_LoginPartial" />
 </nav>
 

@@ -1,0 +1,57 @@
+﻿/* Icon Colors Variables */
+/* Icon Colors Variables */
+/* Variable Colors */
+/* Variable Colors */
+/* Navbar Section */
+nav {
+  display: flex;
+  padding: 1rem;
+  gap: 3rem;
+  background: black;
+  color: #ff9ff6;
+  align-items: center;
+  align-content: center;
+}
+nav img {
+  width: 4rem;
+  margin-left: 2rem;
+}
+nav a,
+nav a:visited,
+nav a:active {
+  text-decoration: none;
+  color: white;
+}
+nav a:hover,
+nav a:visited:hover,
+nav a:active:hover {
+  color: #ff9ff6;
+  background-color: black;
+}
+nav ul {
+  list-style: none;
+  position: relative;
+}
+nav ul .components {
+  display: none;
+}
+nav ul .show {
+  display: block;
+  transition-duration: 3s;
+}
+nav ul li {
+  display: inline;
+  margin: 0.23rem;
+}
+nav ul li ul {
+  position: absolute;
+  right: 0;
+  background: #000101;
+  border-radius: 0.2rem;
+  box-shadow: -0.3rem 0.5rem 0.2rem #ff9ff6;
+}
+nav ul li ul li {
+  display: block;
+}
+
+/* End Navbar Section */

@@ -1,7 +1,6 @@
-﻿@import "nav.scss";
-@import "footer.scss"; 
-@import "variables.scss";
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+﻿@import "_variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+
 *,
 *:before,
 *:after {
@@ -12,20 +11,29 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-body{
-    height:100%;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    font-size:larger;
+html {
+    scroll-behavior: smooth;
 }
+
+body {
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+}
+
 a {
     color: white;
     text-align: left;
-    text-decoration:none;
+    text-decoration: none;
 
     &:hover {
         color: $color-pink;
         background: #182121;
     }
 }
+
+@import "_nav.scss";
+@import "_footer.scss";
+@import "_carousel.scss";

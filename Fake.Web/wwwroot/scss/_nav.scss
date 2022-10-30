@@ -8,10 +8,13 @@ nav {
     color: $color-pink;
     align-items: center;
     align-content:center;
+    justify-items:center;
+    justify-content:space-around;
+    font-size:larger;
 
 
     img {
-        width: 4rem;
+        width: 5rem;
         margin-left: 2rem;
     }
 

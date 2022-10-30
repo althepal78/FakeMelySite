@@ -2,8 +2,44 @@
 /* Icon Colors Variables */
 /* Variable Colors */
 /* Variable Colors */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: 0.3s;
+  font-family: "Ubuntu", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+}
+
+a {
+  color: white;
+  text-align: left;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff9ff6;
+  background: #182121;
+}
+
+/* Icon Colors Variables */
+/* Icon Colors Variables */
+/* Variable Colors */
+/* Variable Colors */
 /* Navbar Section */
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap");
 nav {
   display: flex;
   padding: 1rem;
@@ -12,9 +48,12 @@ nav {
   color: #ff9ff6;
   align-items: center;
   align-content: center;
+  justify-items: center;
+  justify-content: space-around;
+  font-size: larger;
 }
 nav img {
-  width: 4rem;
+  width: 5rem;
   margin-left: 2rem;
 }
 nav a,
@@ -128,6 +167,7 @@ footer .column-section {
   padding: 0.6rem;
   grid-template-columns: 1fr 2fr 1fr;
   align-content: center;
+  justify-items: center;
 }
 footer .column-section h3 {
   color: #ff9ff6;
@@ -142,30 +182,3 @@ footer .copyright {
 /* Icon Colors Variables */
 /* Variable Colors */
 /* Variable Colors */
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  transition: 0.3s;
-  font-family: "Ubuntu", sans-serif;
-}
-
-body {
-  height: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-size: larger;
-}
-
-a {
-  color: white;
-  text-align: left;
-  text-decoration: none;
-}
-a:hover {
-  color: #ff9ff6;
-  background: #182121;
-}

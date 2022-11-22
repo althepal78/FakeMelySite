@@ -1,39 +1,42 @@
-﻿@import "_variables.scss";
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import "_variables";
+@import "_mediaquery";
 
-*,
-*:before,
-*:after {
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    transition: 0.3s;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    height: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     font-size: larger;
 }
 
-a {
-    color: white;
-    text-align: left;
-    text-decoration: none;
-
-    &:hover {
-        color: $color-pink;
-        background: #182121;
-    }
+html {
+    height: 100%;
 }
 
-@import "_nav.scss";
-@import "_footer.scss";
-@import "_carousel.scss";
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+    align-items: center;
+    background-color: $bg-color;
+    justify-content: center;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    text-decoration: underline dotted green;
+}
+
+
+@import "_nav";
+@import "_card";
+@import "_footer";

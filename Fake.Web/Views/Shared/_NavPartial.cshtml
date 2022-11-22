@@ -3,45 +3,43 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 <nav>
-    <img src="/images/melysSmallLogo.jpg" alt="brand logo" />
-    <ul>
-        <li>
-            <a asp-area="Customer"
-               asp-controller="Home"
-               asp-action="Index" class="btn active"> Home  </a>
-        </li>
-        <li>
-            <a asp-area="Customer"
-               asp-controller="Menu"
-               asp-action="Index"> Daily Menu  </a>
-        </li>
+    <div class="nav-logo">
+        <img src="/images/melysSmallLogo.jpg" alt="brand logo" />
+    </div>
 
-        @if (User.IsInRole(StaticDetails.Role_Admin))
-        {
-            <li class="component-list">
-                <a id="drop-btn" href="#">Content Management ></a>
-                <ul class="components">
-                    <li>
-                        <a class="sub-menu-link" asp-area="Admin"
-                       asp-controller="Category"
-                       asp-action="Index">
-                            Category <span class="material-icons">category</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sub-menu-link" asp-area="Admin"
-                       asp-controller="Product"
-                       asp-action="Index">Food/Drinks ></a>
-                    </li>
-                    <li>
-                        <a class="sub-menu-link" asp-area="Admin"
-                       asp-controller="Menu"
-                       asp-action="Index">Menu Creater ></a>
-                    </li>
-                </ul>
-            </li>
-        }
-    </ul>
-    <partial class="login-section" name="_LoginPartial" />
+    <a asp-area="Customer"
+       asp-controller="Home"
+       asp-action="Index" class="nav-link"> Home  </a>
+
+    <a asp-area="Customer"
+       asp-controller="Menu"
+       asp-action="Index" class="nav-link"> Daily Menu  </a>
+
+    @if (User.IsInRole(StaticDetails.Role_Admin))
+    {
+        <div class="nav-dropdown nav-information-grid" data-nav-dropdown>
+            <button class="nav-link" data-nav-dropdown-button id="drop-btn" href="#">Content Management ></button>
+
+            <div class="nav-dropdown-menu">
+                <div class="nav-dropdown-links">
+                    <a asp-area="Admin"
+                   asp-controller="Category"
+                   asp-action="Index">
+                        Category >
+                    </a>
+
+
+                    <a asp-area="Admin"
+                   asp-controller="Product"
+                   asp-action="Index">Food/Drinks ></a>
+
+
+                    <a asp-area="Admin"
+                   asp-controller="Menu"
+                   asp-action="Index">Menu Creater ></a>
+                </div>
+            </div>
+        </div>
+        <partial class="login-section" name="_LoginPartial" />
+    }
 </nav>
-

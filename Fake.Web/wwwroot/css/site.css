@@ -57,8 +57,13 @@
   font-size: larger;
 }
 
+header {
+  width: 100%;
+}
+
 html {
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -92,23 +97,22 @@ nav {
   background-color: #000;
   padding: 1.5rem;
   gap: 1rem;
-  color: whitesmoke;
+  color: #ff9ff6;
 }
 nav .nav-logo img {
-  width: 15rem;
+  width: 5rem;
   margin-left: 2rem;
 }
 nav .nav-link {
   background: none;
   border: none;
-  color: #777;
+  color: #ff9ff6;
   cursor: pointer;
   padding: 0;
   font-size: xx-large;
 }
 nav .nav-link:hover {
-  color: black;
-  background-color: whitesmoke;
+  background-color: #777;
 }
 nav .nav-dropdown {
   position: relative;
@@ -117,7 +121,6 @@ nav .nav-dropdown .nav-dropdown-menu {
   position: absolute;
   left: 0;
   top: calc(100% + 0.25rem);
-  background-color: whitesmoke;
   padding: 0.75rem;
   border-radius: 0.15rem;
   box-shadow: 0.55rem 0.55rem 0.8rem 0 rgba(0, 0, 0, 0.6);
@@ -125,12 +128,18 @@ nav .nav-dropdown .nav-dropdown-menu {
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-  font-size: larger;
+  font-size: 1rem;
+  background-color: whitesmoke;
+  width: 100%;
 }
 nav .nav-dropdown .nav-dropdown-menu .nav-dropdown-links {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+nav .nav-dropdown .nav-dropdown-menu .nav-dropdown-links a:hover {
+  background: black;
+  color: #ff9ff6;
 }
 nav .nav-dropdown .nav-information-grid {
   display: grid;
@@ -149,18 +158,28 @@ nav .nav-dropdown.active > .nav-link + .nav-dropdown-menu {
   transform: translateY(0);
   pointer-events: auto;
 }
-
-.main-section {
-  width: 100%;
+nav .login-section {
+  display: flex;
+  font-size: medium;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 5rem;
+}
+nav .login-section a {
+  color: #ff9ff6;
+}
+nav .login-section a:hover {
+  background-color: #777;
 }
 
 #cards {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  gap: 8px;
-  max-width: 60%;
-  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 100%;
   margin-top: 2rem;
 }
 
@@ -169,15 +188,14 @@ nav .nav-dropdown.active > .nav-link + .nav-dropdown-menu {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  cursor: pointer;
   display: flex;
-  height: 260px;
-  flex-direction: column;
   position: relative;
-  width: 300px;
   font-size: 0.5rem;
+  width: 50%;
+  height: 15rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 .card:hover::before {
@@ -211,10 +229,9 @@ nav .nav-dropdown.active > .nav-link + .nav-dropdown-menu {
   background-color: #171717;
   border-radius: inherit;
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
   inset: 1px;
-  padding: 10px;
+  padding: 1rem;
   position: absolute;
   z-index: 2;
   color: #676363;
@@ -235,16 +252,14 @@ i {
 }
 
 .card-image {
-  align-items: center;
   display: flex;
-  height: 140px;
-  justify-content: center;
   overflow: hidden;
 }
-
-.card-image > i {
-  font-size: 6em;
-  opacity: 0.25;
+.card-image img {
+  font-size: 6rem;
+  opacity: 0.6;
+  width: 25rem;
+  object-fit: contain;
 }
 
 .card-info-wrapper {

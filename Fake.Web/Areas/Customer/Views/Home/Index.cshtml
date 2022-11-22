@@ -11,31 +11,29 @@
 
     @if (Model != null)
     {
-        <!--  Card Section Start    -->
-        <!--  Card Section End    -->
-        <div>
+        <div id="cards">
             @foreach (var meal in Model)
             {
                 if (meal.Category.Name == "Meal")
                 {
-                    <div id="cards">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-image">
-                                    <img src="@meal.ImgURL" alt="@meal.Title">
-                                </div>
-                                <div class="card-info-wrapper">
-                                    <div class="card-info">
-                                        <div class="card-info-title">
-                                            <h3>@meal.Title</h3>
-                                            <p>@meal.Description</p>
-                                            <p><small class="text-info">by @meal.Author</small></p>
-                                        </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-image">
+                                <img src="@meal.ImgURL" alt="@meal.Title">
+                            </div>
+                            <div class="card-info-wrapper">
+                                <div class="card-info">
+                                    <div class="card-info-title">
+                                        <h3>@meal.Title</h3>
+                                        <p>@meal.Description</p>
+                                        <p><small class="text-info">by @meal.Author</small></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 }
             }
         </div>

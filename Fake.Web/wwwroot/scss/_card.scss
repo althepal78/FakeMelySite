@@ -1,14 +1,13 @@
 ﻿@import "_variables";
-.main-section{
-    width:100%;
-}
+
 #cards {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    gap: 8px;
-    max-width: 60%;
-    width:60%;
+    flex-direction:column;
+    justify-content:center; // when flex direction is column this is vertical
+    align-items:center; // when flex direction is column this is horizontal
+    gap: .25rem;
+    min-width: 100%;
     margin-top: 2rem;
 }
 
@@ -17,15 +16,14 @@
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    cursor: pointer;
     display: flex;
-    height: 260px;
-    flex-direction: column;
     position: relative;
-    width: 300px;
     font-size: .5rem;
+    width: 50%;
+    height: 15rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: .25rem;
+    cursor: pointer;
 }
 
 .card:hover::before {
@@ -59,10 +57,9 @@
     background-color: $card-color;
     border-radius: inherit;
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
     inset: 1px;
-    padding: 10px;
+    padding: 1rem;
     position: absolute;
     z-index: 2;
     color: #676363;
@@ -83,16 +80,15 @@ i {
 }
 
 .card-image {
-    align-items: center;
     display: flex;
-    height: 140px;
-    justify-content: center;
     overflow: hidden;
-}
 
-.card-image > i {
-    font-size: 6em;
-    opacity: 0.25;
+    img {
+        font-size: 6rem;
+        opacity: 0.6;
+        width:25rem;
+        object-fit:contain;
+    }
 }
 
 .card-info-wrapper {

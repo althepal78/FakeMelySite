@@ -3,17 +3,19 @@
 nav {
     display: flex;
     align-items: center; // vertical alignment
-    margin-bottom: auto;
     width: 100%;
     background-color: #000;
     padding: 1.5rem;
     gap: 1rem;
     color: $color-pink;
-
+    z-index:7;
+    margin-bottom:auto;
     .nav-logo {
+        
         img {
             width: 5rem;
             margin-left: 2rem;
+
         }
     }
 
@@ -90,7 +92,8 @@ nav {
         font-size: medium;
         align-items: center;
         gap: 2rem;
-        margin-left: 5rem;
+        position:absolute;
+        right: 10%;
 
         a {
             color: $color-pink;

@@ -1,55 +1,4 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
-@media (max-width: 1000px) {
-  body {
-    align-items: flex-start;
-    overflow: auto;
-  }
-
-  #cards {
-    max-width: 1000px;
-    padding: 10px 0px;
-  }
-
-  .card {
-    flex-shrink: 1;
-    width: calc(50% - 4px);
-  }
-}
-@media (max-width: 500px) {
-  .card {
-    height: 180px;
-  }
-
-  .card-image {
-    height: 80px;
-  }
-
-  .card-image > i {
-    font-size: 3em;
-  }
-
-  .card-info-wrapper {
-    padding: 0px 10px;
-  }
-
-  .card-info > i {
-    font-size: 0.8em;
-  }
-
-  .card-info-title > h3 {
-    font-size: 0.9em;
-  }
-
-  .card-info-title > h4 {
-    font-size: 0.8em;
-    margin-top: 4px;
-  }
-}
-@media (max-width: 320px) {
-  .card {
-    width: 100%;
-  }
-}
 * {
   padding: 0;
   margin: 0;
@@ -62,6 +11,7 @@ header {
 }
 
 html {
+  scroll-behavior: smooth;
   height: 100%;
   width: 100%;
 }
@@ -70,10 +20,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: rgb(20, 20, 20);
   height: 100vh;
   align-items: center;
-  background-color: #141414;
-  justify-content: center;
   padding: 0px;
 }
 
@@ -89,15 +38,40 @@ a {
   text-decoration: underline dotted green;
 }
 
+.category-list a {
+  font-size: 2rem;
+  color: whitesmoke;
+  text-decoration: underline dotted;
+}
+.category-list a:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.dataTables_wrapper {
+  font-size: 1rem;
+  color: #ff9ff6 !important;
+}
+.dataTables_wrapper table {
+  width: 100% !important;
+}
+.dataTables_wrapper label {
+  color: #ff9ff6;
+}
+.dataTables_wrapper label select {
+  color: #8c0680 !important;
+}
+
 nav {
   display: flex;
   align-items: center;
-  margin-bottom: auto;
   width: 100%;
   background-color: #000;
   padding: 1.5rem;
   gap: 1rem;
   color: #ff9ff6;
+  z-index: 7;
+  margin-bottom: auto;
 }
 nav .nav-logo img {
   width: 5rem;
@@ -163,13 +137,73 @@ nav .login-section {
   font-size: medium;
   align-items: center;
   gap: 2rem;
-  margin-left: 5rem;
+  position: absolute;
+  right: 10%;
 }
 nav .login-section a {
   color: #ff9ff6;
 }
 nav .login-section a:hover {
   background-color: #777;
+}
+
+.main-section h1 {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1.563rem 0;
+  font-size: 0.9rem;
+  min-width: 25rem;
+  width: 100%;
+  border-radius: 0.313rem 0.313rem 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 1.25rem rgba(107, 106, 106, 0.15);
+}
+table thead tr {
+  background-color: #000;
+  color: #ff9ff6;
+  text-align: left;
+  font-weight: bold;
+}
+table th,
+table td {
+  padding: 0.75rem 0.938rem;
+}
+table tbody tr {
+  border-bottom: 0.063rem solid #dddddd;
+}
+table tbody tr:nth-of-type(even) {
+  background-color: #000 !important;
+  color: #b5ac31;
+}
+table tbody tr:nth-of-type(odd) {
+  color: #f7b0f1;
+}
+table tbody tr:last-of-type {
+  border-bottom: 0.125rem solid #ff9ff6;
+}
+table tbody tr.active-row {
+  font-weight: bold;
+  color: #ff9ff6;
+}
+table a {
+  color: whitesmoke;
+  padding: 0.4rem;
+  text-decoration: underline dotted;
+}
+table a:hover {
+  background-color: whitesmoke;
+  color: #000;
+}
+table img {
+  width: 15rem;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #855480 !important;
 }
 
 #cards {
@@ -195,7 +229,7 @@ nav .login-section a:hover {
   height: 15rem;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 0.25rem;
-  cursor: pointer;
+  margin-bottom: 0.5rem;
 }
 
 .card:hover::before {
@@ -216,7 +250,7 @@ nav .login-section a:hover {
 }
 
 .card::before {
-  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 159, 246, 0.3), transparent 40%);
   z-index: 3;
 }
 
@@ -226,7 +260,7 @@ nav .login-section a:hover {
 }
 
 .card > .card-content {
-  background-color: #171717;
+  background-color: rgb(23, 23, 23);
   border-radius: inherit;
   display: flex;
   flex-grow: 1;
@@ -242,13 +276,13 @@ h2,
 h3,
 h4,
 span {
-  color: #f0f0f0;
+  color: whitesmoke;
   font-weight: 400;
   margin: 0px;
 }
 
 i {
-  color: #f0f0f0;
+  color: rgb(240, 240, 240);
 }
 
 .card-image {
@@ -271,9 +305,9 @@ i {
 }
 
 .card-info {
-  align-items: flex-start;
   display: flex;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 0.25rem;
 }
 
 .card-info > i {
@@ -285,12 +319,31 @@ i {
 .card-info-title > h3 {
   font-size: 1.1em;
   line-height: 20px;
+  color: #d4ad00;
 }
 
 .card-info-title > h4 {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(5, 255, 255, 0.5);
   font-size: 0.85em;
   margin-top: 8px;
+  background-color: blue;
+}
+
+.text-info {
+  color: #ff9ff6;
+  font-size: 0.8rem;
+  float: right;
+}
+
+.description, .description p {
+  color: #ff6a00;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.the-title {
+  font-size: 1.2rem;
 }
 
 footer {
@@ -362,7 +415,7 @@ footer .footer-links a {
   color: goldenrod;
 }
 footer .footer-links a:hover {
-  background-color: #171717;
+  background-color: rgb(23, 23, 23);
   color: #ff9ff6;
 }
 footer .footer-links h3 {

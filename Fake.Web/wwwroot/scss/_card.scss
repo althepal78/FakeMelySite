@@ -12,7 +12,7 @@
 }
 
 #cards:hover > .card::after {
-    opacity: 1;
+    opacity: 1; 
 }
 
 .card {
@@ -23,7 +23,7 @@
     height: 15rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: .25rem;
-    cursor: pointer;
+    margin-bottom:.5rem;
 }
 
 .card:hover::before {
@@ -44,7 +44,7 @@
 }
 
 .card::before {
-    background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40% );
+    background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgba(255,159,246, 0.3), transparent 40% );
     z-index: 3;
 }
 
@@ -70,7 +70,7 @@ h2,
 h3,
 h4,
 span {
-    color: rgb(240, 240, 240);
+    color: $color-white;
     font-weight: 400;
     margin: 0px;
 }
@@ -100,9 +100,9 @@ i {
 }
 
 .card-info {
-    align-items: flex-start;
     display: flex;
-    gap: 10px;
+    align-items: flex-start;
+    gap: .25rem;
 }
 
 .card-info > i {
@@ -114,10 +114,28 @@ i {
 .card-info-title > h3 {
     font-size: 1.1em;
     line-height: 20px;
+    color: #d4ad00;
 }
 
 .card-info-title > h4 {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(5, 255, 255, 0.5);
     font-size: 0.85em;
     margin-top: 8px;
+    background-color: blue;
+}
+.text-info{
+    color: $color-pink;
+    font-size:.8rem;
+    float:right;
+}
+
+.description, .description p {
+    color: #ff6a00;
+    font-size: 1rem;
+    text-align:center;
+    margin:0 auto;
+}
+
+.the-title {
+    font-size: 1.2rem;
 }

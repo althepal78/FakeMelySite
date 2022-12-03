@@ -1,54 +1,53 @@
-﻿
-@media (max-width: 1000px) {
-    body {
-        align-items: flex-start;
-        overflow: auto;
-    }
+﻿//@media (max-width: 1000px) {
+//    body {
+//        align-items: flex-start;
+//        overflow: auto;
+//    }
 
-    #cards {
-        max-width: 1000px;
-        padding: 10px 0px;
-    }
+//    #cards {
+//        max-width: 1000px;
+//        padding: 10px 0px;
+//    }
 
-    .card {
-        flex-shrink: 1;
-        width: calc(50% - 4px);
-    }
-}
+//    .card {
+//        flex-shrink: 1;
+//        width: calc(50% - 4px);
+//    }
+//}
 
-@media (max-width: 500px) {
-    .card {
-        height: 180px;
-    }
+//@media (max-width: 500px) {
+//    .card {
+//        height: 180px;
+//    }
 
-    .card-image {
-        height: 80px;
-    }
+//    .card-image {
+//        height: 80px;
+//    }
 
-    .card-image > i {
-        font-size: 3em;
-    }
+//    .card-image > i {
+//        font-size: 3em;
+//    }
 
-    .card-info-wrapper {
-        padding: 0px 10px;
-    }
+//    .card-info-wrapper {
+//        padding: 0px 10px;
+//    }
 
-    .card-info > i {
-        font-size: 0.8em;
-    }
+//    .card-info > i {
+//        font-size: 0.8em;
+//    }
 
-    .card-info-title > h3 {
-        font-size: 0.9em;
-    }
+//    .card-info-title > h3 {
+//        font-size: 0.9em;
+//    }
 
-    .card-info-title > h4 {
-        font-size: 0.8em;
-        margin-top: 4px;
-    }
-}
+//    .card-info-title > h4 {
+//        font-size: 0.8em;
+//        margin-top: 4px;
+//    }
+//}
 
-@media (max-width: 320px) {
-    .card {
-        width: 100%;
-    }
-}
+//@media (max-width: 320px) {
+//    .card {
+//        width: 100%;
+//    }
+//}

@@ -1,27 +1,50 @@
-﻿<div  >
-    <div class="category-list">
-        <div  >
-            <h2 >Product List</h2>
+﻿@model List<ProductVM>
+
+<div>
+    <div>
+        <div>
+            <h2>Product List</h2>
         </div>
-        <div >
-            <a asp-controller="Product" asp-action="Upsert" ><i ></i>&nbsp; Create New Product</a>
+        <div>
+            <a asp-controller="Product" asp-action="Upsert"><i></i>&nbsp; Create New Product</a>
         </div>
     </div>
 
 
-    <table id="tblData">
+    <table>
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Price</th>
                 <th>Author</th>
-                <th>Category</th>    
+                <th>Category</th>
                 <th></th>
             </tr>
         </thead>
+        <tbody>
+            if (Model != null)
+            {
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Product" asp-action="ViewInfo" asp-route-id="@obj.Product.Id">@obj.Product.Title</a>
+                        </td>
+                        <td>@obj.Product.Price</td>
+                        <td>
+                            @obj.Product.Author
+                        </td>
+                        <td>@obj.Product.Category.Name</td>
+                        <td>
+                            <div role="group">
+                                <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Product.Id"><i></i> Edit</a>
+                                <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Product.Id"><i></i> Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
     </table>
 </div>
 
-@section Scripts{
-    <script src="~/js/product.js"></script>
-}

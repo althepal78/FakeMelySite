@@ -38,30 +38,6 @@ a {
   text-decoration: underline dotted green;
 }
 
-.category-list a {
-  font-size: 2rem;
-  color: whitesmoke;
-  text-decoration: underline dotted;
-}
-.category-list a:hover {
-  background-color: whitesmoke;
-  color: black;
-}
-
-.dataTables_wrapper {
-  font-size: 1rem;
-  color: #ff9ff6 !important;
-}
-.dataTables_wrapper table {
-  width: 100% !important;
-}
-.dataTables_wrapper label {
-  color: #ff9ff6;
-}
-.dataTables_wrapper label select {
-  color: #8c0680 !important;
-}
-
 nav {
   display: flex;
   align-items: center;
@@ -173,10 +149,10 @@ table td {
   padding: 0.75rem 0.938rem;
 }
 table tbody tr {
-  border-bottom: 0.063rem solid #dddddd;
+  border-bottom: 0.063rem solid #ff9ff6;
 }
 table tbody tr:nth-of-type(even) {
-  background-color: #000 !important;
+  background-color: #000;
   color: #b5ac31;
 }
 table tbody tr:nth-of-type(odd) {

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Category>
 
 <div>
-    <div class="category-list">
+    <div >
         <div>
             <h2>Category List</h2>
         </div>
@@ -32,7 +32,6 @@
                             <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"><i></i> Edit</a>
                             <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"><i></i> Delete</a>
                         </div>
-
                     </td>
                 </tr>
             }

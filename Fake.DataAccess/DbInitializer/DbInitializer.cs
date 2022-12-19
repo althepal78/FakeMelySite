@@ -64,15 +64,9 @@ namespace Fake.DataAccess.DbInitializer
                 //   site name for now https://melysundergroundcusine.azurewebsites.net/
              
 
-                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "albertcardonaii@gmail.com");
+                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "papichulo@test.com");
                 _userManager.AddToRoleAsync(user, StaticDetails.Role_Admin).GetAwaiter().GetResult();
 
-                user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "mister01610@yahoo.com");
-                _userManager.AddToRoleAsync(user, StaticDetails.Role_Admin).GetAwaiter().GetResult();
-
-                user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "melysundergroundcuisine@gmail.com");
-                _userManager.AddToRoleAsync(user, StaticDetails.Role_Admin).GetAwaiter().GetResult();
-                
 
             }
             return;

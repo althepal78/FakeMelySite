@@ -41,38 +41,11 @@ a {
     text-decoration: underline dotted green;
 }
 
-.category-list {
-    a {
-        font-size: 2rem;
-        color: $color-white;
-        text-decoration: underline dotted;
 
-        &:hover {
-            background-color: $color-white;
-            color: black;
-        }
-    }
-}
-
-.dataTables_wrapper {
-    table {
-        width: 100% !important;
-    }
-
-    font-size: 1rem;
-    color: $color-pink !important;
-
-    label {
-        color: $color-pink;
-
-        select {
-            color: #8c0680 !important;
-        }
-    }
-}
 
 @import "_nav";
 @import "_main-section";
 @import "_tables.scss";
 @import "_card";
 @import "_footer";
+@import "_upsert";

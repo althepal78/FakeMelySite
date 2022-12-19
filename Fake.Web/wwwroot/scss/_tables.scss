@@ -24,11 +24,11 @@ table {
     }
 
     tbody tr {
-        border-bottom: .063rem solid #dddddd;
+        border-bottom: .063rem solid $color-pink;
     }
 
     tbody tr:nth-of-type(even) {
-        background-color: #000 !important;
+        background-color: #000;
         color: #b5ac31;
     }
 

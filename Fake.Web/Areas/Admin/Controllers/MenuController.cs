@@ -1,5 +1,4 @@
-﻿using Fake.DataAccess.Repository;
-using Fake.DataAccess.Repository.IRepository;
+﻿using Fake.DataAccess;
 using Fake.Models;
 using Fake.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -13,15 +12,15 @@ namespace Fake.Web.Areas.Admin.Controllers
     [Authorize]
     public class MenuController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ApplicationDbContext _db;
 
-        public MenuController(IUnitOfWork unitOfWork)
+        public MenuController(ApplicationDbContext db)
         {
-            _unitOfWork = unitOfWork;
+            _db = db;
         }
         public IActionResult Index()
         {
-            var product = _unitOfWork.Product.GetAll().ToList();
+            var product = _db.Products.ToList();
             return View(product);
         }
 
@@ -29,11 +28,17 @@ namespace Fake.Web.Areas.Admin.Controllers
         // get action   
         public IActionResult Upsert(Guid? id)
         {
-            ProductVM ifInDb = new ProductVM() 
+            ProductVM ifInDb = new ProductVM();
+            Product inDb = new Product();
+            if (id != null)
             {
-              Product =  _unitOfWork.Product.GetFirstOrDefault(f => f.Id == id)
-            }; 
-
+                inDb = _db.Products.FirstOrDefault(x => x.Id == id);
+            }
+            if (inDb == null)
+            {
+                return View();
+            }
+            ifInDb.Product.Add(inDb);
             return View(ifInDb);
         }
 
@@ -41,15 +46,20 @@ namespace Fake.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Upsert(ProductVM obj)
         {
-           obj.Product = _unitOfWork.Product.GetFirstOrDefault(f => f.Id == obj.Product.Id);
 
+            foreach (var objIn in obj.Product)
+            {
+
+            }
+           obj.Product = _db.Products.Where(f => f.Id == obj.Product.Id.Id);
+            
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("Model", "your model is not working ");
                 return View(new {id = obj.Product.Id});
             }
             
-            Product pro = _unitOfWork.Product.GetFirstOrDefault(p => p.Id == obj.Product.Id);
+            Product pro = _db.Product.GetFirstOrDefault(p => p.Id == obj.Product.Id);
             return RedirectToAction(nameof(Index),"Menu");
         }
     }

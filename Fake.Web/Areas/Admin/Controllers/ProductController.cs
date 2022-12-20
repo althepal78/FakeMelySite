@@ -1,10 +1,10 @@
-﻿using Fake.DataAccess.Repository.IRepository;
-using Fake.Models.ViewModels;
+﻿using Fake.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Fake.Utilities;
-using Org.BouncyCastle.Crypto.Macs;
+using Fake.Models;
+using Fake.DataAccess;
 
 namespace Fake.Web.Areas.Admin.Controllers
 {
@@ -12,16 +12,22 @@ namespace Fake.Web.Areas.Admin.Controllers
     [Authorize(Roles = StaticDetails.Role_Admin)]
     public class ProductController : Controller
     {
-        private readonly IUnitOfWork _unitOfWOrk;
+        private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public ProductController(IUnitOfWork unitOfWOrk, IWebHostEnvironment webHostEnvironment)
+        public ProductController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
-            _unitOfWOrk = unitOfWOrk;
+            _db = db;
             _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
-            return View();
+            ProductVM productVM = new ProductVM();
+            List<Product> product = _db.Products.ToList();
+            foreach (var prod in product)
+            {
+                productVM.Product.Add(prod);
+            }
+            return View(productVM);
         }
 
         // get action   
@@ -30,7 +36,7 @@ namespace Fake.Web.Areas.Admin.Controllers
             ProductVM productVM = new()
             {
                 Product = new(),
-                CategoryList = _unitOfWOrk.Category.GetAll().Select(i => new SelectListItem
+                CategoryList = _db.Categories.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
@@ -44,11 +50,11 @@ namespace Fake.Web.Areas.Admin.Controllers
             else
             {
                 // Update the product
-                productVM.Product = _unitOfWOrk.Product.GetFirstOrDefault(u => u.Id == id);
+                productVM.Product.Add(_db.Products.FirstOrDefault(u => u.Id == id));
                 return View(productVM);
             }
         }
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Upsert(ProductVM obj, IFormFile? file)
@@ -62,62 +68,67 @@ namespace Fake.Web.Areas.Admin.Controllers
                     var uploads = Path.Combine(wwwRootPath, @"images\products");
                     var extension = Path.GetExtension(file.FileName);
 
-                    if (obj.Product.ImgURL != null)
+                    foreach (var image in obj.Product)
                     {
-                        var oldImagePath = Path.Combine(wwwRootPath, obj.Product.ImgURL.TrimStart('\\'));
-                        if (System.IO.File.Exists(oldImagePath))
+                        if (image.ImgURL != null)
                         {
-                            System.IO.File.Delete(oldImagePath);
+                            var oldImagePath = Path.Combine(wwwRootPath, image.ImgURL.TrimStart('\\'));
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
+                        }
+                        using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                        {
+                            file.CopyTo(fileStreams);
+                        }
+                        image.ImgURL = @"\images\products\" + fileName + extension;
+                        if (image.Id == Guid.Empty)
+                        {
+                            _db.Products.Add(image);
+                        }
+                        else
+                        {
+                            _db.Products.Update(image);
                         }
                     }
-                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
-                    {
-                        file.CopyTo(fileStreams);
-                    }
-                    obj.Product.ImgURL = @"\images\products\" + fileName + extension;
+
                 }
-                if (obj.Product.Id == Guid.Empty)
-                {
-                    _unitOfWOrk.Product.Add(obj.Product);
-                }
-                else
-                {
-                    _unitOfWOrk.Product.Update(obj.Product);
-                }
-                _unitOfWOrk.Save();
+                _db.SaveChanges();
                 TempData["success"] = "Product Updated Successfully";
                 return RedirectToAction("Index", "Product");
             }
             return View(obj);
         }
+        /*
+                #region API CALLS
+                [HttpGet]
+                 public IActionResult GetAll()
+                 {
+                     var productList = _db.Product.GetAll(includeProperties: "Category");
+                     return Json(new { data = productList });
+                 }
 
-        #region API CALLS
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var productList = _unitOfWOrk.Product.GetAll(includeProperties: "Category");
-            return Json(new { data = productList });
-        }
+                 [HttpDelete]
+                 public IActionResult Delete(Guid? id)
+                 {
+                     var obj = _db.Product.GetFirstOrDefault(u => u.Id == id);
+                     if (obj == null)
+                     {
+                         return Json(new { success = false, message = "Errror While Deleting" });
+                     }
+                     var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, obj.ImgURL.TrimStart('\\'));
+                     if (System.IO.File.Exists(oldImagePath))
+                     {
+                         System.IO.File.Delete(oldImagePath);
+                     }
+                     _db.Product.Remove(obj);
+                     _unitOfWOrk.Save();
+                     return Json(new { success = true, message = "Deleted Successful" });
+                 }
+                #endregion
+            }
+            */
 
-        [HttpDelete]
-        public IActionResult Delete(Guid? id)
-        {
-            var obj = _unitOfWOrk.Product.GetFirstOrDefault(u => u.Id == id);
-            if (obj == null)
-            {
-                return Json(new { success = false, message = "Errror While Deleting" });
-            }
-            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, obj.ImgURL.TrimStart('\\'));
-            if (System.IO.File.Exists(oldImagePath))
-            {
-                System.IO.File.Delete(oldImagePath);
-            }
-            _unitOfWOrk.Product.Remove(obj);
-            _unitOfWOrk.Save();
-            return Json(new { success = true, message = "Deleted Successful" });
-        }
-        #endregion
     }
-
-
 }

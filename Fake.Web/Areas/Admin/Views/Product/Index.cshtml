@@ -1,4 +1,4 @@
-﻿@model List<ProductVM>
+﻿@model ProductVM
 
 <div>
     <div>
@@ -24,21 +24,21 @@
         <tbody>
             if (Model != null)
             {
-                @foreach (var obj in Model)
+                @foreach (var obj in Model.Product)
                 {
                     <tr>
                         <td>
-                            <a asp-controller="Product" asp-action="ViewInfo" asp-route-id="@obj.Product.Id">@obj.Product.Title</a>
+                            <a asp-controller="Product" asp-action="ViewInfo" asp-route-id="@obj.Id">@obj.Product.Title</a>
                         </td>
-                        <td>@obj.Product.Price</td>
+                        <td>@obj.Price</td>
                         <td>
-                            @obj.Product.Author
+                            @obj.Author
                         </td>
-                        <td>@obj.Product.Category.Name</td>
+                        <td>@obj.Category.Name</td>
                         <td>
                             <div role="group">
-                                <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Product.Id"><i></i> Edit</a>
-                                <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Product.Id"><i></i> Delete</a>
+                                <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id"><i></i> Edit</a>
+                                <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"><i></i> Delete</a>
                             </div>
                         </td>
                     </tr>

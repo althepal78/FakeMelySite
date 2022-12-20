@@ -6,9 +6,9 @@ namespace Fake.Models.ViewModels
 {
     public class ProductVM
     {
-        public Product Product { get; set; }
+        public List<Product> Product { get; set; }
 
-      
+
         public DateTime InputDate { get; set; }
 
         [ValidateNever]

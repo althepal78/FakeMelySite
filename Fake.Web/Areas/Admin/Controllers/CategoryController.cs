@@ -1,5 +1,4 @@
 ﻿using Fake.DataAccess;
-using Fake.DataAccess.Repository.IRepository;
 using Fake.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -11,16 +10,16 @@ namespace Fake.Web.Areas.Admin.Controllers
     [Authorize(Roles = StaticDetails.Role_Admin)]
     public class CategoryController : Controller
     {
-        private readonly IUnitOfWork _unitOfWOrk;
+        private readonly ApplicationDbContext _db;
 
-        public CategoryController(IUnitOfWork unitOfWOrk)
+        public CategoryController(ApplicationDbContext db)
         {
-            _unitOfWOrk = unitOfWOrk;
+            _db = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Category> objCategoryList = _unitOfWOrk.Category.GetAll();
+            IEnumerable<Category> objCategoryList =_db.Categories.ToList();
             return View(objCategoryList);
         }
 
@@ -40,8 +39,8 @@ namespace Fake.Web.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                _unitOfWOrk.Category.Add(obj);
-                _unitOfWOrk.Save();
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -54,7 +53,7 @@ namespace Fake.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var categoryInDb = _unitOfWOrk.Category.GetFirstOrDefault(u => u.Id == id);
+            var categoryInDb = _db.Categories.FirstOrDefault(u => u.Id == id);
             if (categoryInDb == null)
             {
                 return NotFound();
@@ -72,8 +71,8 @@ namespace Fake.Web.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                _unitOfWOrk.Category.Update(obj);
-                _unitOfWOrk.Save();
+               _db.Categories.Update(obj);
+                _db.SaveChanges();
                 TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -82,7 +81,7 @@ namespace Fake.Web.Areas.Admin.Controllers
 
         public IActionResult ViewInfo(Guid? id)
         {
-            var categoryInDb = _unitOfWOrk.Category.GetFirstOrDefault(u => u.Id == id);
+            var categoryInDb = _db.Categories.FirstOrDefault(u => u.Id == id);
             return View(categoryInDb);
         }
 
@@ -92,7 +91,7 @@ namespace Fake.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var categoryInDb = _unitOfWOrk.Category.GetFirstOrDefault(u => u.Id == id);
+            var categoryInDb = _db.Categories.FirstOrDefault(u => u.Id == id);
             if (categoryInDb == null)
             {
                 return NotFound();
@@ -105,13 +104,13 @@ namespace Fake.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(Guid? id)
         {
-            var categoryInDb = _unitOfWOrk.Category.GetFirstOrDefault(u => u.Id == id);
+            var categoryInDb = _db.Categories.FirstOrDefault(u => u.Id == id);
             if (categoryInDb == null)
             {
                 return NotFound();
             }
-            _unitOfWOrk.Category.Remove(categoryInDb);
-            _unitOfWOrk.Save();
+            _db.Categories.FirstOrDefault(categoryInDb);
+            _db.SaveChanges();
             TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index", "Category");
         }

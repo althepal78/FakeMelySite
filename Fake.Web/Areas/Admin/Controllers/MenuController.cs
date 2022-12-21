@@ -28,39 +28,41 @@ namespace Fake.Web.Areas.Admin.Controllers
         // get action   
         public IActionResult Upsert(Guid? id)
         {
-            ProductVM ifInDb = new ProductVM();
-            Product inDb = new Product();
+            Product product = new Product();
+            ProductVM vm = new ProductVM();
+
             if (id != null)
             {
-                inDb = _db.Products.FirstOrDefault(x => x.Id == id);
+                product = _db.Products.FirstOrDefault(p => p.Id == id);
+                if(product == null)
+                {
+                    return View("Error");
+                }
             }
-            if (inDb == null)
-            {
-                return View();
-            }
-            ifInDb.Product.Add(inDb);
-            return View(ifInDb);
+
+            vm.Product.Add(product);
+
+            return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM obj)
-        {
+        public IActionResult Upsert(ProductVM obj)        {
 
             foreach (var objIn in obj.Product)
             {
 
             }
-           obj.Product = _db.Products.Where(f => f.Id == obj.Product.Id.Id);
-            
+            obj.Product = _db.Products.Where(f => f.Id == obj.Product.Id.Id);
+
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("Model", "your model is not working ");
-                return View(new {id = obj.Product.Id});
+                return View(new { id = obj.Product.Id });
             }
-            
+
             Product pro = _db.Product.GetFirstOrDefault(p => p.Id == obj.Product.Id);
-            return RedirectToAction(nameof(Index),"Menu");
+            return RedirectToAction(nameof(Index), "Menu");
         }
     }
 }

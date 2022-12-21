@@ -1,21 +1,15 @@
 ﻿@model ProductVM
-
-@if (Model != null)
-{
-    if (Model.Product is not null)
-    {
-        foreach (var item in Model.Product)
-        {
-            <h1>@item.Title</h1>
-            <form asp-controller="Menu" asp-action="Upsert" method="post">
-                <div asp-validation-summary="All"></div>
-                <input type="hidden" asp-for="Product.Id" value="@Model.Product.Id" />
-                <input asp-for="InputDate" />
-                <input type="submit" value="Create Menu" />
-            </form>
-        }
-    }
+if(@Model != null){
+<h1>It is not null here</h1>
 }
+else{
+   <h1>it is null here</h1>
+}
+
+
+
+
+
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />

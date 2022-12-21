@@ -31,7 +31,7 @@ namespace Fake.Web.Areas.Admin.Controllers
         }
 
         // get action   
-        public IActionResult Upsert(Guid? id)
+        public IActionResult Create(Guid? id)
         {
             ProductVM productVM = new()
             {
@@ -57,7 +57,7 @@ namespace Fake.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM obj, IFormFile? file)
+        public IActionResult Create(ProductVM obj, IFormFile? file)
         {
             if (ModelState.IsValid)
             {

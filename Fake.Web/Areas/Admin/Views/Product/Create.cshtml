@@ -1,26 +1,66 @@
-﻿@model Category
+﻿@model Product
 
-<form method="post">
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input hidden asp-for="@Model.Id" />
+    <input hidden asp-for="@Model.ImgURL" />
     <div>
         <div>
-            <h2>Create Category</h2>
-        </div>
-        <div asp-validation-summary="All"></div>
-        <div>
-            <label asp-for="Name"></label>
-            <input asp-for="Name" />
-        </div>
-        <div>
-            <label asp-for="DisplayOrder"></label>
-            <input asp-for="DisplayOrder" />
-        </div>
-        <button type="submit">Create</button>
-        <a asp-controller="Category" asp-action="Index">Back</a>
-    </div>
+            <div>
+                <div>
+                    <h2>@(@Model.Id != Guid.Empty ? "Update" : "Create") </h2>
+                </div>
 
+                <div>
+                    <label asp-for="@Model+.Title"></label>
+                    <input asp-for="@Model+.Title" />
+                    <span asp-validation-for="@Model.Title"></span>
+                </div>
+                <div>
+                    <label asp-for="@Model.Description"></label>
+                    <textarea asp-for="@Model.Description"></textarea>
+                    <span asp-validation-for="@Model.Description"></span>
+                </div>
+                <div>
+                    <label asp-for="@Model.Author"></label>
+                    <input asp-for="@Model.Author" />
+                    <span asp-validation-for="@Model.Author"></span>
+                </div>
+                <div>
+                    <label asp-for="@Model.Price"></label>
+                    <input asp-for="@Model.Price" />
+                    <span asp-validation-for="@Model.Price"></span>
+                </div>
+
+                <div>
+                    <label asp-for="@Model.ImgURL"></label>
+                    <input type="file" id="uploadBox" name="file" />
+                </div>
+                <div>
+                    <label asp-for="@Model.CategoryId"></label>
+                    <select asp-for="@Model.CategoryId" asp-items="@Model.Category">
+                        <option disabled selected>--Select Category</option>
+                    </select>
+                    <span asp-validation-for="@Model.CategoryId"></span>
+                </div>
+                <div >
+                    @if (Model.Id != Guid.Empty)
+                    {
+                        <button type="submit" style="width: 150px;">Update</button>
+                    }
+                    else
+                    {
+                        <button onclick="return ValidateInput()" type="submit">Create</button>
+                    }
+                    <a asp-controller="Product" asp-action="Index">Back</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </form>
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-    }
+}
